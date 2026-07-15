@@ -880,6 +880,25 @@ ol {
   background: transparent;
 }
 
+.case-link {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--teal-dark);
+  color: var(--teal-dark);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.case-link:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
 /* Services */
 .services {
   background: var(--paper-light);
@@ -1329,6 +1348,10 @@ ol {
   }
 
   .tech-list {
+    grid-column: 1;
+  }
+
+  .case-link {
     grid-column: 1;
   }
 

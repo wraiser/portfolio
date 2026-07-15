@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="二点タッチに反応して光の粒子が集まる、自主制作のインタラクションプロトタイプ。" />
+    <title>Touch Energy｜二点タッチ・インタラクション</title>
+    <style>
+      :root { color-scheme: dark; --ink: #edf7ff; --muted: #99a9bb; --cyan: #74f3ff; --violet: #ad82ff; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; background: #050914; }
+      body { color: var(--ink); font-family: Inter, "Noto Sans JP", system-ui, sans-serif; overflow-x: hidden; }
+      button { font: inherit; }
+      :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+
+      .app { position: relative; min-height: 100svh; isolation: isolate; overflow: hidden; }
+      canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+      .noise { position: absolute; z-index: 1; inset: 0; opacity: .16; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; }
+      .halo { position: absolute; z-index: 0; width: min(78vw, 760px); aspect-ratio: 1; left: 50%; top: 52%; border-radius: 50%; background: radial-gradient(circle, rgba(116,243,255,.2), rgba(173,130,255,.08) 35%, transparent 70%); transform: translate(-50%, -50%); filter: blur(8px); }
+
+      header { position: relative; z-index: 3; display: flex; align-items: flex-start; justify-content: space-between; width: min(1180px, calc(100% - 40px)); margin-inline: auto; padding-top: 28px; gap: 24px; }
+      .brand { display: grid; gap: 3px; font-weight: 800; letter-spacing: .16em; }
+      .brand small { color: var(--cyan); font-size: .62rem; }
+      .prototype { padding: 8px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: var(--muted); font-size: .64rem; letter-spacing: .1em; }
+
+      .content { position: relative; z-index: 3; display: grid; min-height: 100svh; place-items: center; width: min(900px, calc(100% - 40px)); margin-inline: auto; padding: 130px 0 110px; text-align: center; pointer-events: none; }
+      .content-inner { display: grid; justify-items: center; }
+      .state { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; color: var(--cyan); font-size: .68rem; font-weight: 800; letter-spacing: .16em; }
+      .state::before { width: 8px; height: 8px; border-radius: 50%; background: currentColor; content: ""; box-shadow: 0 0 18px currentColor; }
+      h1 { max-width: 800px; margin: 0; font-size: clamp(3rem, 9vw, 8rem); letter-spacing: -.075em; line-height: .9; text-wrap: balance; }
+      h1 em { color: transparent; font-style: normal; -webkit-text-stroke: 1px rgba(237,247,255,.55); }
+      .lead { max-width: 540px; margin: 26px 0 0; color: var(--muted); line-height: 1.8; }
+      .touch-guide { display: flex; gap: clamp(76px, 20vw, 210px); margin-top: 54px; }
+      .finger { position: relative; display: grid; width: 70px; aspect-ratio: 1; place-items: center; border: 1px solid rgba(116,243,255,.35); border-radius: 50%; color: var(--cyan); font-size: .68rem; font-weight: 800; }
+      .finger::before, .finger::after { position: absolute; border: 1px solid rgba(116,243,255,.18); border-radius: 50%; content: ""; inset: -14px; animation: pulse 2.4s ease-out infinite; }
+      .finger::after { inset: -28px; animation-delay: .7s; }
+
+      .actions { position: absolute; z-index: 4; right: 24px; bottom: 24px; left: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .help { color: var(--muted); font-size: .72rem; }
+      .demo-button { min-height: 44px; padding: 0 18px; border: 1px solid var(--cyan); background: rgba(6,17,29,.68); color: var(--cyan); font-weight: 800; cursor: pointer; backdrop-filter: blur(12px); }
+      .demo-button:hover { background: var(--cyan); color: #06111d; }
+
+      .app.is-active .state { color: #fff; }
+      .app.is-active h1 { text-shadow: 0 0 35px rgba(116,243,255,.25); }
+      .app.is-active .finger { background: rgba(116,243,255,.18); box-shadow: 0 0 48px rgba(116,243,255,.4); }
+
+      @keyframes pulse { to { transform: scale(1.35); opacity: 0; } }
+      @media (max-width: 620px) {
+        .content { align-items: center; }
+        .touch-guide { gap: 90px; }
+        .actions { align-items: flex-end; }
+        .help { max-width: 190px; }
+      }
+      @media (prefers-reduced-motion: reduce) { .finger::before, .finger::after { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <div class="halo" aria-hidden="true"></div>
+      <canvas id="energy" aria-label="二点タッチに反応する光の演出"></canvas>
+      <div class="noise" aria-hidden="true"></div>
+      <header>
+        <div class="brand">TOUCH ENERGY <small>INTERACTION LAB</small></div>
+        <span class="prototype">SELF-INITIATED PROTOTYPE / 02</span>
+      </header>
+      <main class="content">
+        <div class="content-inner">
+          <p class="state" id="stateText">WAITING FOR TWO POINTS</p>
+          <h1>触れると、<br /><em>光が応える。</em></h1>
+          <p class="lead">画面を二点で押している間だけ、光の流れが生まれます。タッチ判定、状態遷移、端末負荷を検証するための自主制作デモです。</p>
+          <div class="touch-guide" aria-hidden="true"><span class="finger">LEFT</span><span class="finger">RIGHT</span></div>
+        </div>
+      </main>
+      <div class="actions">
+        <span class="help">スマートフォン: 2本指で長押し<br />PC: ボタンまたはSpaceキー</span>
+        <button class="demo-button" id="demo" type="button">プレビュー再生</button>
+      </div>
+    </div>
+
+    <script>
+      const canvas = document.querySelector('#energy');
+      const ctx = canvas.getContext('2d', { alpha: true });
+      const app = document.querySelector('#app');
+      const stateText = document.querySelector('#stateText');
+      const demo = document.querySelector('#demo');
+      const pointers = new Map();
+      const particles = [];
+      let active = false;
+      let demoActive = false;
+      let width = 0, height = 0, dpr = 1;
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth; height = window.innerHeight;
+        canvas.width = width * dpr; canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function setActive(value) {
+        active = value;
+        app.classList.toggle('is-active', active);
+        stateText.textContent = active ? 'ENERGY FLOW ACTIVE' : 'WAITING FOR TWO POINTS';
+        demo.textContent = demoActive ? 'プレビュー停止' : 'プレビュー再生';
+      }
+
+      function anchors() {
+        if (demoActive || pointers.size < 2) return [{ x: width * .36, y: height * .68 }, { x: width * .64, y: height * .68 }];
+        return [...pointers.values()].slice(0, 2);
+      }
+
+      function spawn() {
+        const [a, b] = anchors();
+        const cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+        const count = width < 640 ? 3 : 5;
+        for (let i = 0; i < count && particles.length < 520; i++) {
+          const side = Math.random() > .5 ? a : b;
+          particles.push({
+            x: side.x + (Math.random() - .5) * 34,
+            y: side.y + (Math.random() - .5) * 34,
+            px: side.x,
+            py: side.y,
+            vx: (cx - side.x) * .006 + (Math.random() - .5) * .7,
+            vy: (cy - side.y) * .006 - Math.random() * .9,
+            life: 1,
+            size: 1 + Math.random() * 3,
+            hue: Math.random() > .45 ? 184 : 263,
+          });
+        }
+      }
+
+      function frame() {
+        ctx.fillStyle = 'rgba(5,9,20,.16)'; ctx.fillRect(0, 0, width, height);
+        if (active) spawn();
+        ctx.globalCompositeOperation = 'lighter';
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i]; p.px = p.x; p.py = p.y; p.x += p.vx; p.y += p.vy; p.vy -= .006; p.life -= active ? .009 : .024;
+          if (p.life <= 0) { particles.splice(i, 1); continue; }
+          ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y);
+          ctx.strokeStyle = `hsla(${p.hue}, 95%, 72%, ${p.life * .7})`; ctx.lineWidth = p.size; ctx.stroke();
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.size * 1.8, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${p.hue}, 100%, 80%, ${p.life * .28})`; ctx.fill();
+        }
+        ctx.globalCompositeOperation = 'source-over'; requestAnimationFrame(frame);
+      }
+
+      canvas.addEventListener('pointerdown', (e) => { canvas.setPointerCapture(e.pointerId); pointers.set(e.pointerId, { x: e.clientX, y: e.clientY }); if (pointers.size >= 2) setActive(true); });
+      canvas.addEventListener('pointermove', (e) => { if (pointers.has(e.pointerId)) pointers.set(e.pointerId, { x: e.clientX, y: e.clientY }); });
+      const release = (e) => { pointers.delete(e.pointerId); if (pointers.size < 2 && !demoActive) setActive(false); };
+      canvas.addEventListener('pointerup', release); canvas.addEventListener('pointercancel', release);
+      demo.addEventListener('click', () => { demoActive = !demoActive; setActive(demoActive || pointers.size >= 2); });
+      window.addEventListener('keydown', (e) => { if (e.code === 'Space' && !e.repeat) { e.preventDefault(); demoActive = true; setActive(true); } });
+      window.addEventListener('keyup', (e) => { if (e.code === 'Space') { demoActive = false; setActive(pointers.size >= 2); } });
+      window.addEventListener('resize', resize);
+      resize();
+      if (new URLSearchParams(window.location.search).has('preview')) demoActive = true;
+      setActive(demoActive);
+      frame();
+    </script>
+  </body>
+</html>

@@ -188,7 +188,7 @@
           <header class="section-heading" data-reveal>
             <p class="section-kicker"><span>02</span> SELECTED WORKS</p>
             <h2 id="works-title">課題から、<br />正常化まで。</h2>
-            <p class="section-note">原因調査から実装、動作確認まで一貫して対応した案件実績です。</p>
+            <p class="section-note">案件実績と自主制作プロトタイプを掲載しています。自主制作は、想定課題に対する操作設計・実装力を示す検証用デモです。</p>
           </header>
 
           <div class="section-content work-list">
@@ -332,6 +332,102 @@
                   <li>JavaScript</li>
                   <li>レスポンシブ対応</li>
                 </ul>
+              </div>
+            </article>
+
+            <article class="work-card work-card--reverse" data-reveal>
+              <div class="work-card__visual">
+                <img
+                  src="assets/badge-studio-preview.png"
+                  alt="画像の移動・拡大・回転と円形プレビューができるBadge Studioの画面"
+                  width="1440"
+                  height="1080"
+                  loading="lazy"
+                />
+                <span class="result-badge">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  PROTOTYPE
+                </span>
+                <span class="work-card__number">CASE 04</span>
+              </div>
+
+              <div class="work-card__body">
+                <div class="work-card__title-row">
+                  <p>Canvas Image Composer</p>
+                  <h3>缶バッジ画像編集<br />プロトタイプ</h3>
+                </div>
+
+                <dl class="case-details">
+                  <div>
+                    <dt><span>01</span>想定課題</dt>
+                    <dd>入稿前に、円形商品へ画像を配置した際の切れ方や仕上がりを利用者自身で確認できるようにしたい。</dd>
+                  </div>
+                  <div>
+                    <dt><span>02</span>実装</dt>
+                    <dd>画像アップロード、ドラッグ移動、拡大・回転、安全範囲の表示、PNG書き出しまでをブラウザ内で完結。</dd>
+                  </div>
+                  <div class="case-result">
+                    <dt><span>03</span>検証結果</dt>
+                    <dd>商品カスタマイズ画面に必要な一連の操作を、レスポンシブ対応の単体デモとして再現。</dd>
+                  </div>
+                </dl>
+
+                <ul class="tech-list" aria-label="使用技術" role="list">
+                  <li>自主制作</li>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Canvas API</li>
+                </ul>
+                <a class="case-link" href="demos/badge-studio/" target="_blank" rel="noopener">操作デモを開く <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="work-card" data-reveal>
+              <div class="work-card__visual">
+                <img
+                  src="assets/touch-energy-preview.png"
+                  alt="二点タッチに反応して光の粒子が集まるTouch Energyの画面"
+                  width="1440"
+                  height="1080"
+                  loading="lazy"
+                />
+                <span class="result-badge">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  PROTOTYPE
+                </span>
+                <span class="work-card__number">CASE 05</span>
+              </div>
+
+              <div class="work-card__body">
+                <div class="work-card__title-row">
+                  <p>Multi-touch Interaction</p>
+                  <h3>二点タッチ連動<br />エフェクト</h3>
+                </div>
+
+                <dl class="case-details">
+                  <div>
+                    <dt><span>01</span>想定課題</dt>
+                    <dd>スマートフォンの二点タッチを合図に、イベントやキャンペーン向けの印象的な演出を表示したい。</dd>
+                  </div>
+                  <div>
+                    <dt><span>02</span>実装</dt>
+                    <dd>Pointer Eventsで複数接触点を判定し、Canvas上で光の粒子を生成。画面幅に応じて描画量を調整。</dd>
+                  </div>
+                  <div class="case-result">
+                    <dt><span>03</span>検証結果</dt>
+                    <dd>二本指操作とPC用プレビューの両方で、待機・再生・終了の状態遷移を確認できるデモを構築。</dd>
+                  </div>
+                </dl>
+
+                <ul class="tech-list" aria-label="使用技術" role="list">
+                  <li>自主制作</li>
+                  <li>JavaScript</li>
+                  <li>Pointer Events</li>
+                  <li>Canvas API</li>
+                  <li>レスポンシブ対応</li>
+                </ul>
+                <a class="case-link" href="demos/touch-energy/" target="_blank" rel="noopener">操作デモを開く <span aria-hidden="true">↗</span></a>
               </div>
             </article>
           </div>
