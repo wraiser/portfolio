@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="設備・保守・工事会社の案件台帳、作業写真、月次請求を一画面へ整理する自主制作事例。" />
+    <title>設備・保守会社の月次請求と案件台帳｜改善事例</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <header class="case-header">
+      <a href="../../">← PORTFOLIO</a>
+      <span>自主制作 / 架空データ</span>
+    </header>
+
+    <main id="main">
+      <section class="case-hero">
+        <p class="kicker">FIELD SERVICE OPERATIONS / CASE STUDY</p>
+        <h1>Excelとメールに散らばる<br />月次請求を、一画面へ。</h1>
+        <p class="case-hero__lead">設備・保守・工事会社で起こりやすい、案件台帳、作業日、完了写真、請求状況の分散を想定し、確認漏れを減らす小規模Web管理画面を設計しました。</p>
+        <div class="case-hero__actions">
+          <a class="button button--primary" href="../../demos/field-service-ops/">操作デモを開く →</a>
+          <a class="text-link" href="#comparison">改善内容を見る ↓</a>
+        </div>
+      </section>
+
+      <section class="case-meta" aria-label="事例の位置づけ">
+        <div><span>TYPE</span><strong>自主制作MVP</strong></div>
+        <div><span>TARGET</span><strong>設備・保守・工事会社</strong></div>
+        <div><span>SCOPE</span><strong>案件・写真・請求管理</strong></div>
+        <div><span>DELIVERY IMAGE</span><strong>7〜21日</strong></div>
+      </section>
+
+      <section class="problem-section section-grid">
+        <header><p class="kicker">01 / ASSUMED PROBLEM</p><h2>作業は終わっているのに、<br />請求準備が終わらない。</h2></header>
+        <div class="problem-list">
+          <article><span>01</span><h3>受付情報が分散</h3><p>電話、メール、紙のメモから案件台帳へ転記するため、入力時点で抜けが生じる。</p></article>
+          <article><span>02</span><h3>完了の基準が曖昧</h3><p>現場作業の完了と、写真・報告・請求準備の完了が同じ欄で管理される。</p></article>
+          <article><span>03</span><h3>月末に再確認</h3><p>請求対象を探すため、案件表、メール、写真フォルダを順番に見直す。</p></article>
+          <article><span>04</span><h3>引き継ぎが属人化</h3><p>担当者しか次の確認先や不足情報が分からず、休みや退職時に作業が止まる。</p></article>
+        </div>
+      </section>
+
+      <section class="comparison" id="comparison">
+        <header><p class="kicker">02 / BEFORE &amp; AFTER</p><h2>転記を増やさず、<br />確認点だけをそろえる。</h2></header>
+        <div class="comparison-table" role="table" aria-label="改善前後の比較">
+          <div class="comparison-row comparison-row--head" role="row"><span role="columnheader">確認場面</span><span role="columnheader">改善前</span><span role="columnheader">改善後</span></div>
+          <div class="comparison-row" role="row"><strong role="cell">案件受付</strong><p role="cell">電話・メールを見ながら複数表へ転記</p><p role="cell">案件番号、顧客、現場、希望日を一度登録</p></div>
+          <div class="comparison-row" role="row"><strong role="cell">作業前</strong><p role="cell">担当者がメールや予定表から対象案件を探す</p><p role="cell">日程確定・7日以内の案件だけを抽出</p></div>
+          <div class="comparison-row" role="row"><strong role="cell">作業後</strong><p role="cell">完了連絡と写真が別の場所に残る</p><p role="cell">作業完了と写真確認を別項目で管理</p></div>
+          <div class="comparison-row" role="row"><strong role="cell">月次請求</strong><p role="cell">完了案件を目視で拾い、請求漏れを再確認</p><p role="cell">完了・未請求だけを一覧化してCSV出力</p></div>
+        </div>
+      </section>
+
+      <section class="solution-section section-grid">
+        <header><p class="kicker">03 / SOLUTION</p><h2>必要機能だけの、<br />小さな管理画面。</h2></header>
+        <div>
+          <ul class="feature-list">
+            <li><span>01</span><div><strong>月次の要確認件数</strong><p>進行中、7日以内、完了・未請求、写真未確認を自動集計。</p></div></li>
+            <li><span>02</span><div><strong>検索と絞り込み</strong><p>案件番号、顧客、現場、進捗、請求状況から対象を抽出。</p></div></li>
+            <li><span>03</span><div><strong>状態をその場で更新</strong><p>作業完了、写真確認、請求準備、請求済みを一覧から変更。</p></div></li>
+            <li><span>04</span><div><strong>CSVで引き渡し</strong><p>既存の請求書作成や会計処理へ渡しやすい形式で出力。</p></div></li>
+          </ul>
+          <a class="demo-card" href="../../demos/field-service-ops/">
+            <span>INTERACTIVE DEMO</span>
+            <strong>架空案件8件を使って操作する</strong>
+            <small>検索・絞り込み・状態変更・案件追加・CSV出力</small>
+            <b aria-hidden="true">↗</b>
+          </a>
+        </div>
+      </section>
+
+      <section class="scope-section">
+        <header><p class="kicker">04 / SCOPE</p><h2>導入前に、含めるものと<br />含めないものを分けます。</h2></header>
+        <div class="scope-grid">
+          <article><h3>初回範囲に含めやすいもの</h3><ul><li>既存台帳・入力項目の整理</li><li>案件一覧、検索、状態更新</li><li>期限・未確認の表示</li><li>CSV入出力</li><li>操作説明と引き継ぎ</li></ul></article>
+          <article><h3>個別確認が必要なもの</h3><ul><li>複数権限・ログイン</li><li>大量の既存データ移行</li><li>会計ソフト・外部API連携</li><li>機密性の高い個人情報</li><li>24時間の緊急対応</li></ul></article>
+        </div>
+      </section>
+
+      <section class="case-cta">
+        <p class="kicker">START WITH DIAGNOSIS</p>
+        <h2>いきなり開発せず、<br />現在の台帳から確認します。</h2>
+        <p>5,000円の現状診断では、確認漏れが起きる箇所、重複入力、残すべき項目、改善の優先順位、実装する場合の範囲を簡易レポートにまとめます。</p>
+        <a class="button button--primary" href="https://coconala.com/services/2322056" target="_blank" rel="noopener noreferrer">現状診断を相談する ↗</a>
+      </section>
+    </main>
+
+    <footer><a href="../../">KYOSUKE / OPERATIONS &amp; WEB SUPPORT</a><span>自主制作・架空データ</span></footer>
+  </body>
+</html>
