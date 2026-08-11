@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="顧客・案件・期限・次の行動を一画面で管理する、業務特化型の案件フロー管理デモです。"
+    />
+    <title>案件フロー管理｜業務特化MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">メインコンテンツへ移動</a>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="メインナビゲーション">
+        <a class="brand" href="./" aria-label="案件フロー管理 ホーム">
+          <span class="brand__mark" aria-hidden="true">F</span>
+          <span>
+            <strong>案件フロー管理</strong>
+            <small>WORKFLOW DESK</small>
+          </span>
+        </a>
+
+        <nav class="nav-list" aria-label="表示切り替え">
+          <button class="nav-item is-active" type="button" data-view-target="overview">
+            <span aria-hidden="true">⌂</span>
+            概要
+          </button>
+          <button class="nav-item" type="button" data-view-target="board">
+            <span aria-hidden="true">▦</span>
+            案件ボード
+          </button>
+        </nav>
+
+        <div class="sidebar__summary" aria-label="今週の状況">
+          <p class="eyebrow">THIS WEEK</p>
+          <strong id="sidebar-due-count">0件</strong>
+          <span>期限が近い対応</span>
+        </div>
+
+        <div class="sidebar__bottom">
+          <p><span class="status-dot"></span> デモデータで稼働中</p>
+          <a href="../../">ポートフォリオへ戻る ↗</a>
+        </div>
+      </aside>
+
+      <main id="main" class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">PROJECT OPERATIONS</p>
+            <h1 id="page-title">業務状況</h1>
+          </div>
+          <div class="topbar__actions">
+            <button class="button button--ghost" id="export-button" type="button">CSV出力</button>
+            <button class="button button--primary" id="new-project-button" type="button">
+              <span aria-hidden="true">＋</span> 案件を追加
+            </button>
+          </div>
+        </header>
+
+        <section class="toolbar" aria-label="案件の検索と絞り込み">
+          <label class="search-field">
+            <span class="sr-only">案件または顧客を検索</span>
+            <span aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" placeholder="案件名・顧客名を検索" autocomplete="off" />
+          </label>
+          <label class="select-field">
+            <span class="sr-only">優先度で絞り込む</span>
+            <select id="priority-filter">
+              <option value="all">すべての優先度</option>
+              <option value="high">高</option>
+              <option value="medium">中</option>
+              <option value="low">低</option>
+            </select>
+          </label>
+          <button class="text-button" id="reset-button" type="button">デモを初期状態に戻す</button>
+        </section>
+
+        <div class="view is-active" id="overview-view" data-view="overview">
+          <section class="metrics" aria-label="案件指標">
+            <article class="metric-card metric-card--dark">
+              <span>進行中の案件</span>
+              <strong id="metric-active">0</strong>
+              <small id="metric-active-note">全案件を集計</small>
+            </article>
+            <article class="metric-card">
+              <span>7日以内の期限</span>
+              <strong id="metric-due">0</strong>
+              <small>次の行動を含む</small>
+            </article>
+            <article class="metric-card">
+              <span>今月の見込金額</span>
+              <strong id="metric-value">¥0</strong>
+              <small>契約・制作中を集計</small>
+            </article>
+            <article class="metric-card">
+              <span>完了率</span>
+              <strong id="metric-completion">0%</strong>
+              <small>登録案件に対する割合</small>
+            </article>
+          </section>
+
+          <section class="overview-grid">
+            <article class="panel pipeline-panel">
+              <header class="panel__header">
+                <div>
+                  <p class="eyebrow">PIPELINE</p>
+                  <h2>案件の進行状況</h2>
+                </div>
+                <button class="text-button" type="button" data-switch-to-board>ボードで見る →</button>
+              </header>
+              <div class="pipeline-bars" id="pipeline-bars"></div>
+            </article>
+
+            <article class="panel action-panel">
+              <header class="panel__header">
+                <div>
+                  <p class="eyebrow">NEXT ACTION</p>
+                  <h2>優先して対応すること</h2>
+                </div>
+              </header>
+              <div class="action-list" id="action-list"></div>
+            </article>
+          </section>
+        </div>
+
+        <div class="view" id="board-view" data-view="board">
+          <div class="board" id="project-board" aria-label="案件進捗ボード"></div>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="modal" id="project-modal" aria-labelledby="modal-title">
+      <form id="project-form" method="dialog">
+        <header class="modal__header">
+          <div>
+            <p class="eyebrow">PROJECT DETAILS</p>
+            <h2 id="modal-title">案件を追加</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-modal aria-label="閉じる">×</button>
+        </header>
+
+        <input id="project-id" type="hidden" />
+        <div class="form-grid">
+          <label class="field field--wide">
+            <span>案件名 <b>必須</b></span>
+            <input id="project-name" required maxlength="60" placeholder="例：予約受付フォームの改善" />
+          </label>
+          <label class="field">
+            <span>顧客名 <b>必須</b></span>
+            <input id="client-name" required maxlength="40" placeholder="例：山田商店" />
+          </label>
+          <label class="field">
+            <span>ステータス</span>
+            <select id="project-status"></select>
+          </label>
+          <label class="field">
+            <span>優先度</span>
+            <select id="project-priority">
+              <option value="high">高</option>
+              <option value="medium" selected>中</option>
+              <option value="low">低</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>見込金額</span>
+            <input id="project-value" type="number" min="0" step="1000" inputmode="numeric" placeholder="50000" />
+          </label>
+          <label class="field">
+            <span>期限</span>
+            <input id="project-due" type="date" />
+          </label>
+          <label class="field">
+            <span>次の行動日</span>
+            <input id="project-next-date" type="date" />
+          </label>
+          <label class="field field--wide">
+            <span>次の行動</span>
+            <input id="project-next-action" maxlength="80" placeholder="例：確認事項を整理して返信" />
+          </label>
+          <label class="field field--wide">
+            <span>メモ</span>
+            <textarea id="project-notes" rows="4" maxlength="400" placeholder="要望、確認事項、引き継ぎ内容など"></textarea>
+          </label>
+        </div>
+
+        <p class="form-error" id="form-error" role="alert"></p>
+        <footer class="modal__footer">
+          <button class="button button--danger is-hidden" id="delete-project-button" type="button">削除</button>
+          <div>
+            <button class="button button--ghost" type="button" data-close-modal>キャンセル</button>
+            <button class="button button--primary" type="submit">保存する</button>
+          </div>
+        </footer>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
