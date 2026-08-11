@@ -218,7 +218,8 @@ button {
   color: #96a39e;
 }
 
-.sidebar__bottom a {
+.sidebar__bottom a,
+.sidebar__bottom > span {
   color: #bcc8c3;
   text-decoration: none;
 }
