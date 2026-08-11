@@ -82,19 +82,19 @@
             </p>
 
             <h1 id="hero-title" data-reveal data-delay="1">
-              <span>日々の業務を、</span>
-              <span>使える仕組みに。</span>
-              <em>小さく作り、確かに整えます。</em>
+              <span>表計算に散らばる業務を、</span>
+              <span>使えるWebツールへ。</span>
+              <em>必要機能から、小さく確かめて作ります。</em>
             </h1>
 
             <p class="hero__lead" data-reveal data-delay="2">
-              シフト・勤怠などの小規模管理ツール、Webサイトの修正、WordPressの保守。
-              現状と必要な成果を整理し、確認しやすく引き継ぎやすい形で納品します。
+              Excel・スプレッドシートで分散した顧客、案件、期限、集計を一画面へ。
+              業務整理と操作試作から始め、小規模な管理ツールとして段階的に実装します。
             </p>
 
             <div class="hero__actions" data-reveal data-delay="3">
               <a class="button button--primary" href="#works">
-                <span>実績を見る</span>
+                <span>納品実績・操作デモを見る</span>
                 <svg aria-hidden="true" viewBox="0 0 20 20">
                   <path d="M4 10h12M11 5l5 5-5 5" />
                 </svg>
@@ -120,9 +120,9 @@
           </figure>
 
           <div class="hero__meta" aria-label="対応領域" data-reveal data-delay="4">
-            <span>BUSINESS TOOLS</span>
-            <span>WORDPRESS</span>
-            <span>WEB MAINTENANCE</span>
+            <span>SPREADSHEET TO WEB</span>
+            <span>MVP DEVELOPMENT</span>
+            <span>WORDPRESS SUPPORT</span>
           </div>
         </div>
       </section>
@@ -187,11 +187,106 @@
         <div class="section-grid page-shell">
           <header class="section-heading" data-reveal>
             <p class="section-kicker"><span>02</span> SELECTED WORKS</p>
-            <h2 id="works-title">課題から、<br />正常化まで。</h2>
-            <p class="section-note">案件実績と自主制作プロトタイプを掲載しています。自主制作は、想定課題に対する操作設計・実装力を示す検証用デモです。</p>
+            <h2 id="works-title">業務を整理し、<br />動く形へ。</h2>
+            <p class="section-note">納品済みの業務管理アプリを先頭に、操作可能な自主制作MVPとWebサイトの改善実績を掲載しています。自主制作は受託実績と分けて表記しています。</p>
           </header>
 
           <div class="section-content work-list">
+            <article class="work-card" data-reveal>
+              <div class="work-card__visual">
+                <img
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/93462474/hZoFmshkenVrzQNE.png"
+                  alt="シフト管理システムのギャップ分析画面。職種別の人員過不足を可視化"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                />
+                <span class="result-badge">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  DELIVERED
+                </span>
+                <span class="work-card__number">CASE 01</span>
+              </div>
+
+              <div class="work-card__body">
+                <div class="work-card__title-row">
+                  <p>Web Application</p>
+                  <h3>バイトシフト管理<br />アプリ開発</h3>
+                </div>
+
+                <dl class="case-details">
+                  <div>
+                    <dt><span>01</span>課題</dt>
+                    <dd>多職種（ベーカー・フィニッシャー・セールス・ポーター）のシフト管理を効率化したい。人員の過不足を可視化し、適正配置を実現する必要があった。</dd>
+                  </div>
+                  <div>
+                    <dt><span>02</span>対応</dt>
+                    <dd>従業員管理・シフト入力・ギャップ分析・CSV出力・必要人数設定・動作設定の6機能を備えたWebアプリをHTML/CSS/JSで開発。1ファイル完結で導入しやすい設計。</dd>
+                  </div>
+                  <div class="case-result">
+                    <dt><span>03</span>成果</dt>
+                    <dd>時間帯別の人員過不足を一覧で確認でき、配置調整の判断に使える形で納品。</dd>
+                  </div>
+                </dl>
+
+                <ul class="tech-list" aria-label="使用技術" role="list">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>レスポンシブ対応</li>
+                </ul>
+                <a class="case-link" href="demos/shift-management/" target="_blank" rel="noopener">制作事例と操作デモを開く <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="work-card work-card--reverse" data-reveal>
+              <div class="work-card__visual">
+                <img
+                  src="assets/project-flow-preview.jpg"
+                  alt="案件フロー管理のダッシュボード。進行中案件、期限、見込金額、次の行動を一覧表示"
+                  width="1265"
+                  height="712"
+                  loading="lazy"
+                />
+                <span class="result-badge">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  INTERACTIVE MVP
+                </span>
+                <span class="work-card__number">CASE 02</span>
+              </div>
+
+              <div class="work-card__body">
+                <div class="work-card__title-row">
+                  <p>Operations Dashboard</p>
+                  <h3>顧客・案件・期限の<br />一元管理MVP</h3>
+                </div>
+
+                <dl class="case-details">
+                  <div>
+                    <dt><span>01</span>想定課題</dt>
+                    <dd>顧客情報、案件の進捗、期限、次に行う対応が表計算やメモへ分散し、確認や引き継ぎに時間がかかる。</dd>
+                  </div>
+                  <div>
+                    <dt><span>02</span>実装</dt>
+                    <dd>ダッシュボード、5段階の案件ボード、追加・編集、検索、期限超過表示、CSV出力、ブラウザ保存を備えた操作デモを独自設計。</dd>
+                  </div>
+                  <div class="case-result">
+                    <dt><span>03</span>検証結果</dt>
+                    <dd>相談から完了までの状況と優先対応を一画面で把握し、実際に案件を登録・移動できるMVPとして構築。</dd>
+                  </div>
+                </dl>
+
+                <ul class="tech-list" aria-label="使用技術" role="list">
+                  <li>自主制作</li>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Web Storage</li>
+                </ul>
+                <a class="case-link" href="demos/project-flow/" target="_blank" rel="noopener">操作デモを開く <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
             <article class="work-card" data-reveal>
               <div class="work-card__visual">
                 <img
@@ -205,7 +300,7 @@
                   <span class="status-dot" aria-hidden="true"></span>
                   RESOLVED
                 </span>
-                <span class="work-card__number">CASE 01</span>
+                <span class="work-card__number">CASE 03</span>
               </div>
 
               <div class="work-card__body">
@@ -256,7 +351,7 @@
                   <span class="status-dot" aria-hidden="true"></span>
                   RESTORED
                 </span>
-                <span class="work-card__number">CASE 02</span>
+                <span class="work-card__number">CASE 04</span>
               </div>
 
               <div class="work-card__body">
@@ -292,53 +387,6 @@
             <article class="work-card" data-reveal>
               <div class="work-card__visual">
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/93462474/hZoFmshkenVrzQNE.png"
-                  alt="シフト管理システムのギャップ分析画面。職種別の人員過不足を可視化"
-                  width="1200"
-                  height="900"
-                  loading="lazy"
-                />
-                <span class="result-badge">
-                  <span class="status-dot" aria-hidden="true"></span>
-                  DELIVERED
-                </span>
-                <span class="work-card__number">CASE 03</span>
-              </div>
-
-              <div class="work-card__body">
-                <div class="work-card__title-row">
-                  <p>Web Application</p>
-                  <h3>バイトシフト管理<br />アプリ開発</h3>
-                </div>
-
-                <dl class="case-details">
-                  <div>
-                    <dt><span>01</span>課題</dt>
-                    <dd>多職種（ベーカー・フィニッシャー・セールス・ポーター）のシフト管理を効率化したい。人員の過不足を可視化し、適正配置を実現する必要があった。</dd>
-                  </div>
-                  <div>
-                    <dt><span>02</span>対応</dt>
-                    <dd>従業員管理・シフト入力・ギャップ分析・CSV出力・必要人数設定・動作設定の6機能を備えたWebアプリをHTML/CSS/JSで開発。1ファイル完結で導入しやすい設計。</dd>
-                  </div>
-                  <div class="case-result">
-                    <dt><span>03</span>成果</dt>
-                    <dd>時間帯別の人員過不足を一覧で確認でき、配置調整の判断に使える形で納品。</dd>
-                  </div>
-                </dl>
-
-                <ul class="tech-list" aria-label="使用技術" role="list">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                  <li>レスポンシブ対応</li>
-                </ul>
-                <a class="case-link" href="demos/shift-management/" target="_blank" rel="noopener">制作事例と操作デモを開く <span aria-hidden="true">↗</span></a>
-              </div>
-            </article>
-
-            <article class="work-card work-card--reverse" data-reveal>
-              <div class="work-card__visual">
-                <img
                   src="assets/badge-studio-preview.png"
                   alt="画像の移動・拡大・回転と円形プレビューができるBadge Studioの画面"
                   width="1440"
@@ -349,7 +397,7 @@
                   <span class="status-dot" aria-hidden="true"></span>
                   PROTOTYPE
                 </span>
-                <span class="work-card__number">CASE 04</span>
+                <span class="work-card__number">CASE 05</span>
               </div>
 
               <div class="work-card__body">
@@ -384,7 +432,7 @@
               </div>
             </article>
 
-            <article class="work-card" data-reveal>
+            <article class="work-card work-card--reverse" data-reveal>
               <div class="work-card__visual">
                 <img
                   src="assets/touch-energy-preview.png"
@@ -397,7 +445,7 @@
                   <span class="status-dot" aria-hidden="true"></span>
                   PROTOTYPE
                 </span>
-                <span class="work-card__number">CASE 05</span>
+                <span class="work-card__number">CASE 06</span>
               </div>
 
               <div class="work-card__body">
