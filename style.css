@@ -1243,6 +1243,280 @@ ol {
   line-height: 1.9;
 }
 
+/* Decision tools */
+.decision-tools {
+  background: var(--paper-deep);
+}
+
+.decision-content {
+  display: grid;
+  gap: 54px;
+}
+
+.roi-calculator {
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid var(--line-strong);
+  background: var(--paper-light);
+}
+
+.roi-calculator__header,
+.faq__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.roi-calculator h3,
+.faq h3,
+.partner-offer h3 {
+  margin-top: 10px;
+  font-size: clamp(1.4rem, 2.7vw, 2.35rem);
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+}
+
+.text-button {
+  padding: 4px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--teal-dark);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.roi-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--line);
+}
+
+.roi-form label {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  background: var(--white);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.roi-form input {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  padding: 8px 42px 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper-light);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.roi-form label > span {
+  position: absolute;
+  right: 26px;
+  bottom: 27px;
+  color: var(--muted);
+  font-size: 0.65rem;
+  pointer-events: none;
+}
+
+.roi-results {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 22px;
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.roi-results > div {
+  min-width: 0;
+  padding: 20px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.roi-results span {
+  display: block;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.roi-results strong {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  letter-spacing: -0.045em;
+}
+
+.roi-results small {
+  margin-left: 5px;
+  color: var(--teal);
+  font-size: 0.65rem;
+}
+
+.roi-disclaimer {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.faq {
+  padding-top: 28px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq-list {
+  margin-top: 24px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.faq summary {
+  position: relative;
+  padding: 22px 48px 22px 0;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  color: var(--teal-dark);
+  content: "+";
+  font-family: var(--font-mono);
+  transform: translateY(-50%);
+}
+
+.faq details[open] summary::after {
+  content: "−";
+}
+
+.faq details p {
+  max-width: 54rem;
+  padding: 0 48px 24px 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.9;
+}
+
+/* Partners */
+.partner {
+  background: var(--paper);
+}
+
+.partner-content {
+  display: grid;
+  gap: 32px;
+}
+
+.partner-offer {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  gap: clamp(30px, 5vw, 64px);
+  padding: clamp(30px, 5vw, 58px);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.partner-offer > div > p:last-child {
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
+
+.partner-offer dl {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.partner-offer dl > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.partner-offer dt {
+  color: var(--teal);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+}
+
+.partner-offer dd {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.partner-grid article {
+  min-height: 190px;
+  padding: 26px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--paper-light);
+}
+
+.partner-grid article span {
+  color: var(--teal-dark);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+}
+
+.partner-grid article h3 {
+  margin-top: 18px;
+  font-size: 1.05rem;
+}
+
+.partner-grid article p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+.partner-note {
+  padding: 20px 22px;
+  border-left: 3px solid var(--teal);
+  background: var(--teal-soft);
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.85;
+}
+
 /* Contact */
 .contact {
   position: relative;
@@ -1393,6 +1667,28 @@ ol {
   transform: translate(4px, -4px);
 }
 
+.platform-link--direct {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: var(--ink);
+}
+
+.platform-link--direct small {
+  color: rgba(18, 26, 34, 0.58);
+}
+
+.platform-link--direct svg {
+  stroke: var(--ink);
+}
+
+.contact__privacy {
+  max-width: 70rem;
+  margin-top: 34px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.7rem;
+  line-height: 1.8;
+}
+
 .contact__note {
   margin-top: 40px;
   color: rgba(255, 255, 255, 0.42);
@@ -1508,6 +1804,15 @@ ol {
   }
 
   .pilot-offer {
+    grid-template-columns: 1fr;
+  }
+
+  .roi-form,
+  .roi-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partner-offer {
     grid-template-columns: 1fr;
   }
 }
@@ -1816,6 +2121,18 @@ ol {
   .pilot-offer__facts,
   .sales-visual-grid {
     grid-template-columns: 1fr;
+  }
+
+  .roi-form,
+  .roi-results,
+  .partner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roi-calculator__header,
+  .faq__header {
+    align-items: start;
+    flex-direction: column;
   }
 
   .pilot-offer__actions {

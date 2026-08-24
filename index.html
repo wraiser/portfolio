@@ -715,6 +715,99 @@
         </div>
       </section>
 
+      <section class="section decision-tools" id="roi" aria-labelledby="roi-title">
+        <div class="section-grid page-shell">
+          <header class="section-heading" data-reveal>
+            <p class="section-kicker"><span>05</span> DECISION TOOLS</p>
+            <h2 id="roi-title">発注前に、<br />効果と不安を整理。</h2>
+            <p class="section-note">
+              Web化を前提にせず、現在の確認時間と試作費用を比較します。結果は入力した仮定に基づく目安であり、削減効果を保証するものではありません。
+            </p>
+          </header>
+
+          <div class="section-content decision-content">
+            <section class="roi-calculator" aria-labelledby="calculator-title" data-reveal>
+              <div class="roi-calculator__header">
+                <div><p class="micro-label">ROI QUICK CHECK</p><h3 id="calculator-title">手作業の月間時間を概算する</h3></div>
+                <button class="text-button" type="button" data-roi-reset>初期値へ戻す</button>
+              </div>
+
+              <form class="roi-form" data-roi-form>
+                <label>月間処理件数<input name="monthlyCount" type="number" min="0" step="1" value="100" inputmode="numeric" /></label>
+                <label>1件あたりの転記・確認<input name="minutesPerItem" type="number" min="0" step="1" value="5" inputmode="decimal" /><span>分</span></label>
+                <label>月末の再確認<input name="monthlyReviewHours" type="number" min="0" step="0.5" value="5" inputmode="decimal" /><span>時間</span></label>
+                <label>月間の手戻り件数<input name="reworkCount" type="number" min="0" step="1" value="5" inputmode="numeric" /></label>
+                <label>手戻り1件あたり<input name="reworkMinutes" type="number" min="0" step="1" value="20" inputmode="decimal" /><span>分</span></label>
+                <label>時間単価<input name="hourlyRate" type="number" min="0" step="100" value="2000" inputmode="numeric" /><span>円</span></label>
+                <label>想定削減率<input name="reductionRate" type="number" min="0" max="100" step="5" value="30" inputmode="decimal" /><span>％</span></label>
+                <label>比較する導入費用<input name="implementationCost" type="number" min="0" step="1000" value="40000" inputmode="numeric" /><span>円</span></label>
+              </form>
+
+              <div class="roi-results" aria-live="polite">
+                <div><span>現在の月間作業</span><strong data-roi-result="currentHours">0</strong><small>時間</small></div>
+                <div><span>想定削減時間</span><strong data-roi-result="savedHours">0</strong><small>時間／月</small></div>
+                <div><span>想定削減額</span><strong data-roi-result="savedAmount">0</strong><small>円／月</small></div>
+                <div><span>費用回収の目安</span><strong data-roi-result="paybackMonths">—</strong><small>か月</small></div>
+              </div>
+              <p class="roi-disclaimer">※ 削減率は仮定です。実際の効果は、業務内容、利用人数、定着状況、本番要件によって変わります。</p>
+            </section>
+
+            <section class="faq" aria-labelledby="faq-title" data-reveal>
+              <div class="faq__header"><p class="micro-label">FAQ</p><h3 id="faq-title">試作前によく確認されること</h3></div>
+              <div class="faq-list">
+                <details><summary>今のExcelは残せますか。</summary><p>はい。最初から置き換えるのではなく、CSV出力や確認画面だけを追加し、既存Excelを残す進め方も可能です。</p></details>
+                <details><summary>スマートフォンでも使えますか。</summary><p>試作時に対象端末を合意し、入力や確認が必要な画面をスマートフォン向けに調整します。複雑な表は用途に応じて表示方法を分けます。</p></details>
+                <details><summary>試作後に本番化しなくてもよいですか。</summary><p>はい。試作は発注判断の材料です。Excel整理で十分、本番化は見送る、別の方法が適切という結論も含めて整理します。</p></details>
+                <details><summary>月額契約は必須ですか。</summary><p>必須ではありません。試作・単発改修だけで終了できます。保守が必要な場合のみ、作業上限を決めて別途ご提案します。</p></details>
+                <details><summary>修正は何回までですか。</summary><p>7日間試作は中間確認1回、合意範囲内の修正1回を基本とします。追加機能や合意後の仕様変更は別途整理します。</p></details>
+                <details><summary>ソースコードを受け取れますか。</summary><p>納品範囲に含めたソース、設定箇所、操作手順、制限事項を共有します。第三者ライセンスや外部サービスの条件がある場合は事前に明記します。</p></details>
+                <details><summary>個人情報を扱えますか。</summary><p>試作では匿名化した架空データを優先します。個人情報を本番保存する場合は、保存場所、権限、保持期間、削除、バックアップを別途設計します。</p></details>
+                <details><summary>無料で画面を作ってもらえますか。</summary><p>初回は公開情報に基づく仮説と画面イメージ1枚までです。操作できる試作、実データ整理、複数回の打ち合わせは有料範囲として合意後に着手します。</p></details>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section partner" id="partner" aria-labelledby="partner-title">
+        <div class="section-grid page-shell">
+          <header class="section-heading" data-reveal>
+            <p class="section-kicker"><span>06</span> PARTNERS</p>
+            <h2 id="partner-title">制作・改善支援の、<br />実装パートナーとして。</h2>
+            <p class="section-note">
+              顧客窓口や上流整理を担当される制作会社・業務改善支援者向けに、範囲を限定した画面試作と小規模実装を支援します。
+            </p>
+          </header>
+
+          <div class="section-content partner-content">
+            <div class="partner-offer" data-reveal>
+              <div>
+                <p class="micro-label">SUBCONTRACT / PROTOTYPE SUPPORT</p>
+                <h3>要件整理後の「触れる画面」を、5〜7日で。</h3>
+                <p>管理画面、フォーム、一覧・検索、CSV、提案用デモ、WordPressの軽微修正など、合意した1業務・1操作フローを担当します。</p>
+              </div>
+              <dl>
+                <div><dt>標準範囲</dt><dd>中間確認1回・修正1回・ソース・操作手順</dd></div>
+                <div><dt>料金目安</dt><dd>30,000〜50,000円</dd></div>
+                <div><dt>連絡</dt><dd>文面中心、顧客情報は必要最小限</dd></div>
+                <div><dt>対象外</dt><dd>大規模認証・決済・基幹連携・24時間対応</dd></div>
+              </dl>
+            </div>
+
+            <div class="partner-grid" data-reveal data-delay="1">
+              <article><span>01</span><h3>提案用プロトタイプ</h3><p>架空データを使い、顧客が操作して判断できる画面を作ります。</p></article>
+              <article><span>02</span><h3>小規模な管理画面</h3><p>入力・一覧・検索・CSVなど、範囲を限定して実装します。</p></article>
+              <article><span>03</span><h3>既存サイトの部分改修</h3><p>フォーム、表示崩れ、WordPressの軽微修正に対応します。</p></article>
+              <article><span>04</span><h3>納品前の操作確認</h3><p>境界値、日本語、CSV、スマートフォン表示を確認します。</p></article>
+            </div>
+
+            <p class="partner-note" data-reveal>
+              専門外の実務経験を前提とする常駐開発、顧客への無断再委託、契約条件を確認できない作業はお受けしません。公開デモと合意した対応範囲を根拠に進めます。
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section class="contact" id="contact" aria-labelledby="contact-title">
         <div class="contact__inner page-shell">
           <div class="contact__eyebrow" data-reveal>
@@ -734,10 +827,26 @@
 
             <div class="contact__links">
               <a
+                class="platform-link platform-link--direct"
+                href="mailto:kyoduke98@gmail.com?subject=7%E6%97%A5%E9%96%93%E8%A9%A6%E4%BD%9C%E3%81%AE%E7%9B%B8%E8%AB%87"
+                data-direct-email
+                data-conversion="direct-email"
+              >
+                <span>
+                  <small>DIRECT / EMAIL</small>
+                  メールで直接相談
+                </span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 6h16v12H4zM4 7l8 6 8-6" />
+                </svg>
+              </a>
+
+              <a
                 class="platform-link"
                 href="https://www.lancers.jp/profile/-K_H-"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-conversion="lancers"
               >
                 <span>
                   <small>WORK REQUEST</small>
@@ -754,6 +863,7 @@
                 href="https://coconala.com/services/2322056"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-conversion="coconala"
               >
                 <span>
                   <small>WORK REQUEST</small>
@@ -770,6 +880,7 @@
                 href="https://crowdworks.jp/public/employees/3921632"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-conversion="crowdworks"
               >
                 <span>
                   <small>WORK REQUEST</small>
@@ -782,6 +893,10 @@
               </a>
             </div>
           </div>
+
+          <p class="contact__privacy" data-reveal data-delay="3">
+            このサイトは第三者のアクセス解析・広告Cookieを使用していません。営業リンクの識別情報は、このブラウザ内で相談メールの件名へ引き継ぐためだけに使用し、外部へ自動送信しません。
+          </p>
 
 
         </div>

@@ -1,0 +1,10 @@
+{
+  "name": "kyosuke-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check script.js && node --check business-tools.js && node --test"
+  }
+}
