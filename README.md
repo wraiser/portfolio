@@ -1,6 +1,6 @@
 # 京介｜業務改善・Web Support ポートフォリオ
 
-小規模な業務管理ツール、WordPress・Webサイトの修正保守、継続サポートを紹介する、**1ページ完結の静的ポートフォリオサイト**です。クラウドソーシングで納品したシフト管理アプリの制作事例と、顧客・案件・期限を一元管理する自主制作MVPの操作デモを中心に掲載しています。
+小規模な業務管理ツール、WordPress・Webサイトの修正保守、継続サポートを紹介する、**1ページ完結の静的ポートフォリオサイト**です。クラウドソーシングで納品したシフト管理アプリの制作事例、顧客・案件・期限を一元管理する自主制作MVPの操作デモ、既存業務を対象にした「7日間試作パック」を掲載しています。
 
 お問い合わせボタンは、ランサーズ、ココナラ、クラウドワークスの本人プロフィールへ接続しています。
 
@@ -10,10 +10,10 @@
 
 | 項目 | 内容 |
 |---|---|
-| 構成 | プロフィール、納品実績、業務特化MVP、操作デモ、対応可能な業務、料金・進め方、お問い合わせ |
+| 構成 | プロフィール、納品実績、業務特化MVP、操作デモ、対応可能な業務、7日間試作パック、料金・進め方、お問い合わせ |
 | 対応端末 | デスクトップ、タブレット、スマートフォン |
 | 使用技術 | HTML5、CSS3、Vanilla JavaScript |
-| 外部依存 | Google Fonts、画像CDN |
+| 外部依存 | Google Fonts、画像CDN、一部ローカル画像 |
 | アニメーション | Intersection Observerによる控えめなスクロール表示 |
 | アクセシビリティ | セマンティックHTML、キーボードフォーカス、動きの低減設定に対応 |
 
@@ -32,22 +32,14 @@ GitHub Pagesで公開する際に必要な主要ファイルは次の4点です�
 
 ## 公開前の編集
 
-### ランサーズとココナラのURLを差し替える
+### 依頼窓口のURLを確認する
 
-`index.html`で次の2つのURLを検索し、それぞれ京介さんのプロフィールURLへ変更します。
-
-```html
-<!-- ランサーズ -->
-href="https://www.lancers.jp/"
-
-<!-- ココナラ -->
-href="https://coconala.com/"
-```
-
-差し替え後は、問い合わせセクション内の次の注意書きも削除してください。
+`index.html`の問い合わせセクションには、ランサーズ、ココナラ、クラウドワークスの本人プロフィールURLを設定しています。アカウント名や公開URLを変更した場合は、3つのリンクを同時に更新してください。
 
 ```html
-※ 現在は各サービスのトップページに接続しています。公開前にプロフィールURLへ差し替えてください。
+href="https://www.lancers.jp/profile/-K_H-"
+href="https://coconala.com/services/2322056"
+href="https://crowdworks.jp/public/employees/3921632"
 ```
 
 ### 文章や実績を更新する
@@ -60,7 +52,7 @@ GitHub公式ドキュメントでは、リポジトリの**Settings → Pages**�
 
 ### 1. GitHubにリポジトリを作成する
 
-GitHubへログインし、新しいリポジトリを作成します。リポジトリ名は`portfolio`など任意の名前で構いません。ユーザーサイトとして公開したい場合は、`GitHubユーザー名.github.io`という名前を使用できます。
+GitHubへログインし、新しいリポジトリを作成します。リポジトリ名は`portfolio`など任意の名前で構いません。ユーザーサイトとして公開したい場合は、`GitHubユーザー名.github.io`という名前を使用できます。既存の公開環境では`wraiser/portfolio`の`main`ブランチを使用しています。
 
 ### 2. ファイルをリポジトリへ追加する
 
@@ -69,7 +61,7 @@ Web画面からアップロードする場合は、`index.html`、`style.css`、
 Gitを使用する場合は、ターミナルでこのディレクトリへ移動し、次のコマンドを実行します。`YOUR_USERNAME`と`YOUR_REPOSITORY`は実際の値へ置き換えてください。
 
 ```bash
-cd /home/ubuntu/portfolio
+cd portfolio
 git init
 git add index.html style.css script.js README.md
 git commit -m "Add freelance portfolio site"
@@ -111,7 +103,7 @@ https://YOUR_USERNAME.github.io/
 `script.js`はES Moduleとして読み込まれるため、ファイルを直接ダブルクリックするのではなく、簡易HTTPサーバーを使用すると確実です。
 
 ```bash
-cd /home/ubuntu/portfolio
+cd portfolio
 python3 -m http.server 8000
 ```
 
