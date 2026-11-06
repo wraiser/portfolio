@@ -175,6 +175,7 @@
                 <li>JavaScript</li>
                 <li>Excel</li>
                 <li>Googleスプレッドシート</li>
+                <li>Google Apps Script</li>
                 <li>データ確認・進捗整理</li>
                 <li>Google Tag Manager</li>
                 <li>Contact Form 7</li>
@@ -239,6 +240,52 @@
                 </ul>
                 <a class="case-link" href="demos/field-service-ops/" target="_blank" rel="noopener">操作デモを開く <span aria-hidden="true">↗</span></a>
                 <a class="case-link" href="cases/field-service-ops/">導入前後の事例ページを見る <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="work-card" data-reveal>
+              <div class="work-card__visual">
+                <img
+                  src="assets/gas-inventory-automation-preview.svg"
+                  alt="架空データの買取台帳イメージ。滞留日数で行を色分けし、入力ミスを検証結果に表示"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                />
+                <span class="result-badge">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  SAMPLE CODE
+                </span>
+                <span class="work-card__number">GAS SAMPLE</span>
+              </div>
+
+              <div class="work-card__body">
+                <div class="work-card__title-row">
+                  <p>Google Apps Script</p>
+                  <h3>買取・<span style="white-space: nowrap">在庫台帳の</span><br />GAS 自動化</h3>
+                </div>
+
+                <dl class="case-details">
+                  <div>
+                    <dt><span>01</span>想定課題</dt>
+                    <dd>買取・リユース業でスプレッドシートの買取台帳を手作業で運用すると、入力ミスに気づきにくく、滞留在庫を探す手間や日次集計の作業が毎日発生する。</dd>
+                  </div>
+                  <div>
+                    <dt><span>02</span>実装</dt>
+                    <dd>入力チェック、管理番号の重複検出、滞留日数による行の色分け、日次集計シートの自動作成、Slack・メール通知を実装。6分の実行時間制限を考慮した分割実行とトリガーによる再開、エラーログの記録も備えています。</dd>
+                  </div>
+                  <div class="case-result">
+                    <dt><span>03</span>検証</dt>
+                    <dd>純粋関数の単体テスト14件と、GAS APIをスタブに置き換えたスモークテスト5件、計19件が合格。実際のApps Script環境での動作確認は今後行います。</dd>
+                  </div>
+                </dl>
+
+                <ul class="tech-list" aria-label="使用技術" role="list">
+                  <li>自主制作</li>
+                  <li>架空データ</li>
+                  <li>Google Apps Script</li>
+                </ul>
+                <a class="case-link" href="https://github.com/wraiser/portfolio/tree/main/gas-inventory-automation" target="_blank" rel="noopener">コードと README を見る <span aria-hidden="true">↗</span></a>
               </div>
             </article>
 

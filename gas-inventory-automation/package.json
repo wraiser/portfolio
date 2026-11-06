@@ -1,0 +1,11 @@
+{
+  "name": "gas-inventory-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "リユース・買取業を想定したスプレッドシート在庫・買取台帳の自動化（自主制作サンプル）",
+  "scripts": {
+    "test": "TZ=Asia/Tokyo node --test tests/logic.test.js tests/main.smoke.test.js",
+    "push": "clasp push"
+  },
+  "license": "MIT"
+}
